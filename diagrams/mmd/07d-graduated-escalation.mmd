@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant A as Agent
+    participant U as User
+
+    Note over A: Confidence < 0.7
+    A->>U: I am not sure about X. Could you clarify?
+
+    U->>A: Partial response
+
+    Note over A: Still uncertain
+    A->>U: I see 2 options: A (trade-off X) vs B (trade-off Y). Which do you prefer?
+
+    U->>A: Option A
+
+    Note over A: Confidence >= 0.9
+    A->>A: Execute Option A
+    A->>U: Done! I executed Option A. Result: [...]

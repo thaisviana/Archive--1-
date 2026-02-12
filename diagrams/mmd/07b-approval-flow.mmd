@@ -1,0 +1,22 @@
+stateDiagram-v2
+    [*] --> AgentDecides: Agent decides to call delete_memory_block
+
+    AgentDecides --> Interrupted: interrupt_on triggered
+    Interrupted --> UserReview: Present context + rationale to user
+
+    UserReview --> Approved: Approve
+    UserReview --> Edited: Edit
+    UserReview --> Rejected: Reject
+
+    Approved --> Executed: Agent executes action
+    Edited --> AgentRetries: Agent receives modified action
+    Rejected --> AgentAdjusts: Agent receives rejection and adjusts approach
+
+    AgentRetries --> Executed
+    Executed --> AuditLog: LangFuse @observe logs action + decision
+    AgentAdjusts --> [*]
+    AuditLog --> [*]
+
+    note right of Interrupted
+        Checkpointer (MemorySaver) preserves agent state during the pause
+    end note

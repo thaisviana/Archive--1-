@@ -1,0 +1,20 @@
+flowchart LR
+    subgraph TURN1[Turn 1]
+        direction TB
+        T1_P[Persona — cached]
+        T1_I[Instructions — cached]
+        T1_SM[Static Memory: persona, profile — cached]
+        T1_R[Rules — cached]
+        T1_DM[User msg: preferences + context + learnings v1]
+    end
+
+    subgraph TURN2[Turn 2]
+        direction TB
+        T2_P[Persona — cache hit]
+        T2_I[Instructions — cache hit]
+        T2_SM[Static Memory — cache hit]
+        T2_R[Rules — cache hit]
+        T2_DM[User msg: preferences + context + learnings v2 changed]
+    end
+
+    TURN1 -.->|Entire system prompt = cache hit — dynamic changes in user msg only| TURN2

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2172.825 720" width="2172.825" height="720" style="--bg:#1a1b26;--fg:#a9b1d6;--line:#3d59a1;--accent:#7aa2f7;--muted:#565f89;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 30%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="var(--_arrow)" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="var(--_arrow)" />
+  </marker>
+</defs>
+<rect x="40" y="56" width="1195.375" height="624" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<rect x="40" y="56" width="1195.375" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="52" y="70" dy="0.35em" font-size="12" font-weight="600" fill="var(--_text-sec)">System Prompt — CACHED</text>
+<rect x="566.45" y="312" width="206.82499999999993" height="348" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<rect x="566.45" y="312" width="206.82499999999993" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="578.45" y="326" dy="0.35em" font-size="12" font-weight="600" fill="var(--_text-sec)">Layer 3-S: STATIC MEMORY</text>
+<rect x="1255.375" y="40" width="877.4499999999998" height="404" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<rect x="1255.375" y="40" width="877.4499999999998" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="1267.375" y="54" dy="0.35em" font-size="12" font-weight="600" fill="var(--_text-sec)">Messages</text>
+<rect x="1531.5749999999998" y="76" width="403.70000000000005" height="348" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<rect x="1531.5749999999998" y="76" width="403.70000000000005" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="1543.5749999999998" y="90" dy="0.35em" font-size="12" font-weight="600" fill="var(--_text-sec)">Layer 3-D: DYNAMIC MEMORY in user message</text>
+<polyline points="303.22499999999997,168 303.22499999999997,368" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="303.22499999999997,404 303.22499999999997,424 650.925,424 650.925,604" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="670.925,404 670.925,622 795.2749999999999,622" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1393.475,168 1393.475,188 1630.35,188 1630.35,368" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1747,168 1747,386 1957.2749999999996,386" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="112.04999999999995" y="132" width="382.35" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="61.99999999999994" y="368" width="482.45000000000005" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="795.2749999999999" y="604" width="418.1" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="588.4499999999999" y="604" width="124.95" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="590.5749999999999" y="368" width="160.70000000000002" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1277.375" y="132" width="232.20000000000002" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1957.2749999999996" y="368" width="153.55" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1553.5749999999998" y="368" width="153.55" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1731.1249999999998" y="368" width="182.15" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1677.375" y="132" width="139.25" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<text x="303.22499999999997" y="150" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Layer 1: PERSONA — Agent identity and personality</text>
+<text x="303.22499999999997" y="386" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Layer 2: INSTRUCTIONS — Safety, Memory, Research, Communication</text>
+<text x="1004.3249999999998" y="622" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Layer 4: RULES — Never fabricate, Always explain edits</text>
+<text x="650.925" y="622" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">persona block</text>
+<text x="670.925" y="386" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">user_profile block</text>
+<text x="1393.475" y="150" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">... conversation history ...</text>
+<text x="2034.0499999999997" y="386" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Actual user query</text>
+<text x="1630.35" y="386" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">preferences block</text>
+<text x="1822.1999999999998" y="386" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">working_context block</text>
+<text x="1747" y="150" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">learnings block</text>
+</svg>

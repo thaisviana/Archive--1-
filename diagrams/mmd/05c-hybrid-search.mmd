@@ -1,0 +1,18 @@
+flowchart TB
+    QUERY[User Query: refund policy]
+
+    subgraph HYBRID[Hybrid Search (PGVectorStore)]
+        direction LR
+        VEC[Vector Search — pgvector similarity (top 10)]
+        KW[Keyword Search — tsvector full-text, pg_catalog.portuguese (top 10)]
+    end
+
+    RRF[Reciprocal Rank Fusion (RRF, k=60) — Combine rankings]
+
+    RESULTS[Top-K Results — Ranked by combined relevance]
+
+    QUERY --> VEC
+    QUERY --> KW
+    VEC --> RRF
+    KW --> RRF
+    RRF --> RESULTS

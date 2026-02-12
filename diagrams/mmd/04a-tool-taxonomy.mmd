@@ -1,0 +1,20 @@
+flowchart LR
+    subgraph READ[Read]
+        VIEW[view_memory_blocks — View all or a specific block]
+    end
+
+    subgraph WRITE[Write (read-only blocks rejected)]
+        INSERT[insert_memory_block — Insert text at a specific line]
+        REPLACE[replace_memory_content — Replace a string in the block]
+        RETHINK[rethink_memory_block — Rewrite the entire block]
+    end
+
+    subgraph LIFECYCLE[Lifecycle (read-only blocks rejected)]
+        CREATE[create_memory_block — Create new block with label]
+        DELETE[delete_memory_block — Requires human approval]
+        RENAME[rename_memory_block — Change block label]
+    end
+
+    subgraph SIGNAL[Signal]
+        FINISH[finish_memory_edits — Signal end of batch edits]
+    end

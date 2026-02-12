@@ -1,0 +1,13 @@
+flowchart LR
+    subgraph PT[pt-BR Configuration]
+        direction TB
+        STEM[Portuguese Stemming: computadores to comput, correndo to corr]
+        STOP[Stop Words Removal: de, que, em, um]
+        ACCENT[unaccent Extension: coracao matches coracao, Sao Paulo matches sao paulo]
+    end
+
+    TSV[tsv_lang: pg_catalog.portuguese + public.pt_unaccent]
+
+    TSV --> STEM
+    TSV --> STOP
+    TSV --> ACCENT

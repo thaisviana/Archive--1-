@@ -1,0 +1,25 @@
+flowchart TD
+    subgraph BLOCKS[5 Default MemoryBlocks]
+        subgraph STATIC[Static — System Prompt (cached, read-only)]
+            P[persona — 2000 chars, read-only]
+            UP[user_profile — 3000 chars, editable]
+        end
+        subgraph DYNAMIC[Dynamic — User Message (per turn, editable)]
+            PR[preferences — 2000 chars]
+            WC[working_context — 4000 chars]
+            LE[learnings — 3000 chars]
+        end
+    end
+
+    subgraph LIMITS[Block Size Management]
+        THRESHOLD[At 80% of char_limit: auto-compress via rethink]
+        OFFLOAD[If still over limit: offload overflow to StoreBackend]
+    end
+
+    subgraph AUDIT[Audit Trail]
+        BH[(BlockHistory: Versioned snapshot of every change)]
+    end
+
+    P & UP & PR & WC & LE -->|every edit generates a record| BH
+    PR & WC & LE -.->|when approaching limit| THRESHOLD
+    THRESHOLD -.->|overflow content| OFFLOAD

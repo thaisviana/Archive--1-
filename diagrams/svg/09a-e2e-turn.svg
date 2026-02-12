@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1389.5950000000003 1170" width="1389.5950000000003" height="1170" style="--bg:#1a1b26;--fg:#a9b1d6;--line:#3d59a1;--accent:#7aa2f7;--muted:#565f89;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 30%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="seq-arrow" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto-start-reverse">
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="var(--_arrow)" />
+  </marker>
+  <marker id="seq-arrow-open" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto-start-reverse">
+    <polyline points="0 0, 8 2.4, 0 4.8" fill="none" stroke="var(--_arrow)" stroke-width="1" />
+  </marker>
+</defs>
+<line x1="178.665" y1="70" x2="178.665" y2="1140" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line x1="321.14" y1="70" x2="321.14" y2="1140" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line x1="475.365" y1="70" x2="475.365" y2="1140" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line x1="618.865" y1="70" x2="618.865" y2="1140" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line x1="801.6899999999999" y1="70" x2="801.6899999999999" y2="1140" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line x1="977.365" y1="70" x2="977.365" y2="1140" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line x1="1124.44" y1="70" x2="1124.44" y2="1140" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line x1="1271.515" y1="70" x2="1271.515" y2="1140" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line x1="178.665" y1="90" x2="321.14" y2="90" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="249.90249999999997" y="84" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">What is the refund policy?</text>
+<line x1="321.14" y1="130" x2="618.865" y2="130" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="470.0025" y="124" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">SELECT dynamic blocks (preferences, working_context, learnings)</text>
+<line x1="618.865" y1="170" x2="321.14" y2="170" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" marker-end="url(#seq-arrow)" />
+<text x="470.0025" y="164" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">3 dynamic blocks</text>
+<line x1="321.14" y1="210" x2="475.365" y2="210" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="398.2525" y="204" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">System prompt (cached) + user message with dynamic memory</text>
+<polyline points="475.365,250 505.365,250 505.365,270 475.365,270" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="511.365" y="260" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Factual question — Tier 2</text>
+<line x1="475.365" y1="320" x2="801.6899999999999" y2="320" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="638.5274999999999" y="314" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">search_knowledge_base(refund policy)</text>
+<polyline points="801.6899999999999,360 831.6899999999999,360 831.6899999999999,380 801.6899999999999,380" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="837.6899999999999" y="370" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Hybrid: vector + keyword search</text>
+<line x1="801.6899999999999" y1="430" x2="475.365" y2="430" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" marker-end="url(#seq-arrow)" />
+<text x="638.5274999999999" y="424" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">3 relevant chunks</text>
+<line x1="475.365" y1="470" x2="1271.515" y2="470" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="873.44" y="464" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">trace: search tool call</text>
+<polyline points="475.365,510 505.365,510 505.365,530 475.365,530" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="511.365" y="520" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">New preference detected</text>
+<line x1="475.365" y1="580" x2="618.865" y2="580" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="547.115" y="574" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">rethink_memory_block(preferences)</text>
+<polyline points="618.865,620 648.865,620 648.865,640 618.865,640" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="654.865" y="630" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">BlockHistory snapshot</text>
+<polyline points="618.865,690 648.865,690 648.865,710 618.865,710" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="654.865" y="700" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">UPDATE preferences</text>
+<line x1="618.865" y1="760" x2="475.365" y2="760" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" marker-end="url(#seq-arrow)" />
+<text x="547.115" y="754" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">Block preferences updated</text>
+<line x1="475.365" y1="800" x2="1271.515" y2="800" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="873.44" y="794" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">trace: memory update</text>
+<polyline points="475.365,840 505.365,840 505.365,860 475.365,860" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="511.365" y="850" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Generate response with context</text>
+<line x1="475.365" y1="910" x2="1124.44" y2="910" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" marker-end="url(#seq-arrow)" />
+<text x="799.9025" y="904" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">Response in bullet points</text>
+<line x1="1124.44" y1="950" x2="977.365" y2="950" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="1050.9025000000001" y="944" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">graphiti.add_episode(turn)</text>
+<polyline points="977.365,990 1007.365,990 1007.365,1010 977.365,1010" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="1013.365" y="1000" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Extract entities + relationships</text>
+<line x1="1124.44" y1="1060" x2="1271.515" y2="1060" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#seq-arrow)" />
+<text x="1197.9775" y="1054" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">trace: graph write</text>
+<line x1="1124.44" y1="1100" x2="178.665" y2="1100" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" marker-end="url(#seq-arrow)" />
+<text x="651.5525" y="1094" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)">Refund policy: 30 days, 5 business days</text>
+<rect x="588.39" y="74" width="273.40000000000003" height="27" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="855.79,74 861.79,80 855.79,80" fill="var(--_inner-stroke)" />
+<text x="725.09" y="87.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">PHASE 1 — Context Preparation (@before_model)</text>
+<rect x="30" y="174" width="582.28" height="27" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="606.28,174 612.28,180 606.28,180" fill="var(--_inner-stroke)" />
+<text x="321.14" y="187.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Static blocks (persona, profile) already in system prompt — inject dynamic blocks into user message</text>
+<rect x="625.57" y="214" width="199.04000000000002" height="27" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="818.6100000000001,214 824.6100000000001,220 818.6100000000001,220" fill="var(--_inner-stroke)" />
+<text x="725.09" y="227.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">PHASE 2 — Reasoning + Tool Calls</text>
+<rect x="582.6700000000001" y="804" width="284.84000000000003" height="27" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="861.5100000000001,804 867.5100000000001,810 861.5100000000001,810" fill="var(--_inner-stroke)" />
+<text x="725.0900000000001" y="817.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">PHASE 3 — Response + Persistence (@after_model)</text>
+<rect x="1183.4350000000002" y="1104" width="176.16" height="27" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1353.5950000000003,1104 1359.5950000000003,1110 1353.5950000000003,1110" fill="var(--_inner-stroke)" />
+<text x="1271.515" y="1117.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Trace available in dashboard</text>
+<rect x="138.665" y="30" width="80" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="178.665" y="50" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">User</text>
+<rect x="258.66499999999996" y="30" width="124.95" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="321.14" y="50" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">inject_memory</text>
+<rect x="423.615" y="30" width="103.5" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="475.365" y="50" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Agent Core</text>
+<rect x="567.115" y="30" width="103.5" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="618.865" y="50" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">PostgreSQL</text>
+<rect x="710.6149999999999" y="30" width="182.15" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="801.6899999999999" y="50" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">pgvector (LlamaIndex)</text>
+<rect x="932.765" y="30" width="89.2" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="977.365" y="50" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">FalkorDB</text>
+<rect x="1061.9650000000001" y="30" width="124.95" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="1124.44" y="50" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">save_to_graph</text>
+<rect x="1226.9150000000002" y="30" width="89.2" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+<text x="1271.515" y="50" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">LangFuse</text>
+</svg>

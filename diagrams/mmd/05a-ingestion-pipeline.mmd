@@ -1,0 +1,19 @@
+flowchart LR
+    subgraph INPUT[Input]
+        DOCS[Documents: PDF, DOCX, MD, TXT, CSV, HTML...]
+    end
+
+    subgraph PIPELINE[LlamaIndex IngestionPipeline]
+        direction TB
+        LOAD[1. SimpleDirectoryReader — Load documents]
+        CHUNK[2. SentenceSplitter — 512 tokens, 50 overlap]
+        CTX[3. Context Generation — LLM generates context per chunk]
+        PREPEND[4. Prepend Context — Add context to the beginning of each chunk]
+        EMBED[5. Embedding Model — text-embedding-3-small (1536 dims)]
+    end
+
+    subgraph STORE[Storage]
+        PGV[(PostgreSQL + pgvector | Namespace: kb_docs | Hybrid Search Config)]
+    end
+
+    DOCS --> LOAD --> CHUNK --> CTX --> PREPEND --> EMBED --> PGV

@@ -1,0 +1,45 @@
+sequenceDiagram
+    participant U as User
+    participant IM as inject_memory
+    participant AG as Agent Core
+    participant L1 as PostgreSQL
+    participant L2 as pgvector (LlamaIndex)
+    participant L3 as FalkorDB
+    participant SG as save_to_graph
+    participant LF as LangFuse
+
+    Note over U,LF: PHASE 1 — Context Preparation (@before_model)
+
+    U->>IM: What is the refund policy?
+    IM->>L1: SELECT dynamic blocks (preferences, working_context, learnings)
+    L1-->>IM: 3 dynamic blocks
+    Note over IM: Static blocks (persona, profile) already in system prompt — inject dynamic blocks into user message
+    IM->>AG: System prompt (cached) + user message with dynamic memory
+
+    Note over U,LF: PHASE 2 — Reasoning + Tool Calls
+
+    AG->>AG: Factual question — Tier 2
+    AG->>L2: search_knowledge_base(refund policy)
+    L2->>L2: Hybrid: vector + keyword search
+    L2-->>AG: 3 relevant chunks
+    AG->>LF: trace: search tool call
+
+    AG->>AG: New preference detected
+    AG->>L1: rethink_memory_block(preferences)
+    L1->>L1: BlockHistory snapshot
+    L1->>L1: UPDATE preferences
+    L1-->>AG: Block preferences updated
+    AG->>LF: trace: memory update
+
+    Note over U,LF: PHASE 3 — Response + Persistence (@after_model)
+
+    AG->>AG: Generate response with context
+    AG-->>SG: Response in bullet points
+
+    SG->>L3: graphiti.add_episode(turn)
+    L3->>L3: Extract entities + relationships
+    SG->>LF: trace: graph write
+
+    SG-->>U: Refund policy: 30 days, 5 business days
+
+    Note over LF: Trace available in dashboard

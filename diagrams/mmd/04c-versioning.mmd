@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant Agent
+    participant Tool as Memory Tool
+    participant DB as PostgreSQL
+    participant BH as BlockHistory
+    participant SB as StoreBackend
+
+    Agent->>Tool: rethink_memory_block(preferences, new_content)
+    Tool->>DB: SELECT read_only, char_limit FROM memory_blocks WHERE label=preferences
+    DB-->>Tool: read_only=false, char_limit=2000
+
+    Note over Tool: read_only check passed
+
+    Tool->>BH: INSERT snapshot of current content
+    Tool->>DB: UPDATE memory_blocks SET content=new_content
+    DB-->>Tool: OK
+
+    alt len(new_content) > char_limit
+        Tool->>SB: offload overflow to /memory/overflow/preferences
+        Tool->>DB: UPDATE content = truncated to char_limit
+    end
+
+    Tool-->>Agent: Block preferences updated

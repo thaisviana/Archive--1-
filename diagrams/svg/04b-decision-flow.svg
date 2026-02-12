@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2302.325 1351.8500000000001" width="2302.325" height="1351.8500000000001" style="--bg:#1a1b26;--fg:#a9b1d6;--line:#3d59a1;--accent:#7aa2f7;--muted:#565f89;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 30%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="var(--_arrow)" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="var(--_arrow)" />
+  </marker>
+</defs>
+<polyline points="958.7124999999999,76 958.7124999999999,115.99999999999999" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="875.5199873096445,238.95748730964465 875.5199873096445,350.65 408.17499999999995,350.65 408.17499999999995,656.6" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1035.586885414151,245.2756145858488 1035.586885414151,350.65 1344.7624999999998,350.65 1344.7624999999998,379.15" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1264.7792070457353,519.6167070457356 1264.7792070457353,628.1 977.8625,628.1 977.8625,784.575" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1403.9559598055982,540.4065401944016 1403.9559598055982,628.1 1505.675,628.1 1505.675,710.225" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="339.3729054617074,879.7479054617075 339.3729054617074,977.0500000000001 252.625,977.0500000000001 252.625,1094.2" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="491.63407431271474,865.0909256872853 491.63407431271474,977.0500000000001 641.0999999999999,977.0500000000001 641.0999999999999,1094.2" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1436.2059517892644,825.4559517892645 1436.2059517892644,977.0500000000001 975.95,977.0500000000001 975.95,1094.2" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1461.6246590227818,850.8746590227818 1461.6246590227818,977.0500000000001 1346.55,977.0500000000001 1346.55,1094.2" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1558.818804367662,841.7811956323378 1558.818804367662,977.0500000000001 1742.175,977.0500000000001 1742.175,1094.2" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1575.82040239785,824.7795976021499 1575.82040239785,977.0500000000001 2056.85,977.0500000000001 2056.85,1005.5500000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="2056.85,1218.8500000000001 2056.85,1275.8500000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="252.625,1130.2 252.625,1293.8500000000001 813.375,1293.8500000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="975.95,1130.2 975.95,1275.8500000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1346.55,1130.2 1346.55,1293.8500000000001 1138.525,1293.8500000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1742.175,1130.2 1742.175,1293.8500000000001 1138.525,1293.8500000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="641.0999999999999,1130.2 641.0999999999999,1293.8500000000001 813.375,1293.8500000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="394.4549999999999" y="475.875" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="408.17499999999995" y="489.375" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="1328.1825" y="337.15" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1344.7624999999998" y="350.65" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="961.2824999999999" y="614.6" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="977.8625" y="628.1" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="1491.955" y="614.6" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1505.675" y="628.1" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="236.04500000000002" y="963.5500000000001" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="252.625" y="977.0500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="601.6399999999999" y="963.5500000000001" width="78.92" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="641.0999999999999" y="977.0500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Just rename</text>
+<rect x="945.07" y="963.5500000000001" width="61.760000000000005" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="975.95" y="977.0500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Add info</text>
+<rect x="1301.37" y="963.5500000000001" width="90.36" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1346.55" y="977.0500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Fix a section</text>
+<rect x="1702.715" y="963.5500000000001" width="78.92" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1742.175" y="977.0500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Rewrite all</text>
+<rect x="2014.53" y="963.5500000000001" width="84.64" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="2056.85" y="977.0500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Remove block</text>
+<rect x="2040.27" y="1233.8500000000001" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="2056.85" y="1247.3500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="842.6124999999998" y="40" width="232.20000000000002" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1344.7624999999998,379.15 1454.9874999999997,489.375 1344.7624999999998,599.6 1234.5375,489.375" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="958.7124999999999,115.99999999999999 1061.7875,219.075 958.7124999999999,322.15 855.6374999999998,219.075" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="1505.675,710.225 1598.0249999999999,802.575 1505.675,894.9250000000001 1413.325,802.575" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="408.17499999999995,656.6 554.15,802.575 408.17499999999995,948.5500000000001 262.19999999999993,802.575" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="2056.85,1005.5500000000001 2163.5,1112.2 2056.85,1218.8500000000001 1950.1999999999998,1112.2" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="772.3874999999999" y="784.575" width="410.95000000000005" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="39.99999999999997" y="1094.2" width="425.25000000000006" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="816.95" y="1094.2" width="318" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1158.9499999999998" y="1094.2" width="375.20000000000005" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1558.1499999999999" y="1094.2" width="368.05" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1851.375" y="1275.8500000000001" width="410.95000000000005" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="489.2499999999999" y="1094.2" width="303.70000000000005" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="813.375" y="1275.8500000000001" width="325.15000000000003" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<text x="958.7124999999999" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Agent needs to update memory</text>
+<text x="1344.7624999999998" y="489.375" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Is the block read-only?</text>
+<text x="958.7124999999999" y="219.075" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Does the block exist?</text>
+<text x="1505.675" y="802.575" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">What kind of edit?</text>
+<text x="408.17499999999995" y="802.575" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Is this entirely new information?</text>
+<text x="2056.85" y="1112.2" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Is the block obsolete?</text>
+<text x="977.8625" y="802.575" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Reject — read-only blocks cannot be edited at runtime</text>
+<text x="252.625" y="1112.2" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">create_memory_block — Create block with label + content</text>
+<text x="975.95" y="1112.2" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">insert_memory_block — Add text at line X</text>
+<text x="1346.5499999999997" y="1112.2" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">replace_memory_content — Replace string A with B</text>
+<text x="1742.175" y="1112.2" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">rethink_memory_block — Rewrite the entire block</text>
+<text x="2056.85" y="1293.8500000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">delete_memory_block — interrupt_on, approval required</text>
+<text x="641.0999999999999" y="1112.2" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">rename_memory_block — Change the label</text>
+<text x="975.95" y="1293.8500000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">finish_memory_edits — Signal end of batch</text>
+</svg>

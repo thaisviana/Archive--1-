@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant U as User
+    participant IM as inject_memory (@before_model)
+    participant SM as summarize_if_needed (@before_model)
+    participant A as Agent Core + Compaction
+    participant SG as save_to_graph (@after_model)
+    participant RM as rethink_memory (@after_model)
+
+    U->>IM: user message
+    Note over IM: Static blocks already in system prompt — inject dynamic blocks into user message
+
+    IM->>SM: state with hybrid memory layout
+    Note over SM: If tokens > 8000, summarize + set just_summarized flag
+    SM->>A: state (compressed if needed)
+
+    A->>A: LLM + tools
+    A-->>SG: response + updated state
+
+    Note over SG: graphiti.add_episode()
+    SG->>RM: state + just_summarized flag
+    Note over RM: Conditional: run if dynamic tokens > 70% limit OR N turns since last rethink
+
+    RM-->>U: response

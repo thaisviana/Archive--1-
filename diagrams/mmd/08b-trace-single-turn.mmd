@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant U as User
+    participant LF as LangFuse
+    participant AG as Agent (Deep Agents)
+    participant MEM as Memory Tools
+    participant RAG as RAG Pipeline
+    participant KG as Knowledge Graph
+
+    U->>AG: What is our refund policy?
+
+    Note over LF: Trace Start — @observe(agent-turn)
+
+    AG->>LF: LLM call (reasoning)
+    AG->>RAG: search_knowledge_base(refund policy)
+    RAG->>LF: Embedding query
+    RAG->>LF: pgvector similarity search
+    RAG-->>AG: 3 chunks found
+
+    AG->>LF: LLM call (reasoning with context)
+    AG->>MEM: rethink_memory_block(working_context)
+    MEM->>LF: @observe(memory-update)
+
+    AG->>KG: graphiti.add_episode(...)
+    KG->>LF: @observe(graph-write)
+
+    AG-->>U: The refund policy states...
+
+    Note over LF: 4 LLM calls, 2 tools — $0.003, 2.1s

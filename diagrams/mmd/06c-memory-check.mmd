@@ -1,0 +1,23 @@
+flowchart TD
+    Q[Agent receives a question]
+
+    T1{Tier 1: Is it in the memory blocks? (already in context)}
+    T2{Tier 2: Is it a factual question?}
+    T3{Tier 3: Does it involve relationships or temporality?}
+    T4[Tier 4: Complex question — search multiple layers]
+
+    A1[Answer directly (Layer 1 already injected)]
+    A2_KB[search_knowledge_base (Layer 2 — kb_docs)]
+    A2_CH[search_conversation_history (Layer 2 — conversations)]
+    A3[search_knowledge_graph (Layer 3 — Graphiti)]
+    A4[Search Layer 2 + Layer 3, then synthesize results]
+
+    Q --> T1
+    T1 -->|Yes (persona, preferences, user_profile)| A1
+    T1 -->|No| T2
+    T2 -->|Factual/domain| A2_KB
+    T2 -->|What did we discuss?| A2_CH
+    T2 -->|No| T3
+    T3 -->|Yes| A3
+    T3 -->|Complex| T4
+    T4 --> A4

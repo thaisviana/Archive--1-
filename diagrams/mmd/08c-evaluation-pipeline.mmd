@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph INPUT[Data]
+        TRACE[Complete trace (input + output + context)]
+    end
+
+    subgraph JUDGES[LLM-as-Judge Evaluators]
+        direction TB
+        REL[Relevance — Does the answer address the question?]
+        FAITH[Faithfulness — Is the answer grounded in retrieved context?]
+        HELP[Helpfulness — Was the response useful to the user?]
+    end
+
+    subgraph SCORES[Scores]
+        S1[Score: 0.0 - 1.0]
+        FB[User Feedback: thumbs up / thumbs down]
+    end
+
+    TRACE --> REL & FAITH & HELP
+    REL & FAITH & HELP --> S1
+    S1 --> DASHBOARD[LangFuse Dashboard — Aggregated metrics per session/period]
+    FB --> DASHBOARD

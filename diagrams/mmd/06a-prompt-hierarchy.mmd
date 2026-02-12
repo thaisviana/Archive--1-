@@ -1,0 +1,25 @@
+flowchart TB
+    subgraph SYSTEM[System Prompt — CACHED]
+        direction TB
+        L1P[Layer 1: PERSONA — Agent identity and personality]
+        L2I[Layer 2: INSTRUCTIONS — Safety, Memory, Research, Communication]
+        subgraph L3S[Layer 3-S: STATIC MEMORY]
+            SM_P[persona block]
+            SM_UP[user_profile block]
+        end
+        L4R[Layer 4: RULES — Never fabricate, Always explain edits]
+    end
+
+    subgraph MESSAGES[Messages]
+        direction TB
+        HIST[... conversation history ...]
+        subgraph L3D[Layer 3-D: DYNAMIC MEMORY in user message]
+            DM_PR[preferences block]
+            DM_WC[working_context block]
+            DM_LE[learnings block]
+        end
+        QUERY[Actual user query]
+    end
+
+    L1P --> L2I --> L3S --> L4R
+    HIST --> L3D --> QUERY

@@ -1,0 +1,32 @@
+flowchart TB
+    subgraph USER_DATA[User Data]
+        PROFILE[Profile and Preferences]
+        DOCS[Documents / KB]
+        CONV[Conversations]
+    end
+
+    subgraph STORAGE[Where each data type is stored]
+        subgraph PG[PostgreSQL]
+            MB[memory_blocks (Layer 1) — with char_limit + read_only]
+            BH[block_history (audit trail)]
+            KB[kb_docs (Layer 2 — pgvector)]
+            CV[conversations (Layer 2 — pgvector)]
+        end
+        subgraph FK[FalkorDB]
+            NODES[Entity Nodes (Layer 3)]
+            EDGES[Entity Edges / Facts (Layer 3)]
+            EP[Episodes (Layer 3)]
+        end
+        subgraph DA[Deep Agents StoreBackend]
+            OVERFLOW[/memory/overflow/ — offloaded block content]
+        end
+    end
+
+    PROFILE -->|rethink_memory_block| MB
+    MB -->|every edit| BH
+    MB -.->|when block exceeds char_limit| OVERFLOW
+    DOCS -->|ingest_documents.py| KB
+    CONV -->|automatic embedding| CV
+    CONV -->|automatic add_episode| EP
+    EP -->|automatic extraction| NODES
+    EP -->|automatic extraction| EDGES

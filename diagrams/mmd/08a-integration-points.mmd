@@ -1,0 +1,31 @@
+flowchart TB
+    subgraph AGENT_TURN[Agent Turn]
+        direction TB
+
+        subgraph P1[Point 1: Deep Agents / LangChain]
+            LC[CallbackHandler: LLM calls, tools, tokens, latency]
+        end
+
+        subgraph P2[Point 2: LlamaIndex RAG]
+            LI[LlamaIndexInstrumentor: Ingestion, embeddings, retrieval, re-ranking]
+        end
+
+        subgraph P3[Point 3: Custom Operations]
+            OB[@observe() decorator: Memory, Graphiti, approvals, custom logic]
+        end
+    end
+
+    subgraph LANGFUSE[LangFuse Dashboard]
+        direction LR
+        TRACES[Traces — Complete call chains]
+        EVAL[Evaluations — Relevance, faithfulness, helpfulness]
+        COST[Cost Tracking — Per model, per session]
+        PROMPT[Prompt Management — Versioning and deploy]
+    end
+
+    P1 -->|callbacks| TRACES
+    P2 -->|OpenInference| TRACES
+    P3 -->|decorator| TRACES
+    TRACES --> EVAL
+    TRACES --> COST
+    TRACES --> PROMPT

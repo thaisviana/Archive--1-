@@ -1,0 +1,30 @@
+flowchart TD
+    START[Agent needs to update memory]
+    Q0{Is the block read-only?}
+    Q1{Does the block exist?}
+    Q2{What kind of edit?}
+    Q3{Is this entirely new information?}
+    Q4{Is the block obsolete?}
+
+    REJECT[Reject — read-only blocks cannot be edited at runtime]
+    A1[create_memory_block — Create block with label + content]
+    A2[insert_memory_block — Add text at line X]
+    A3[replace_memory_content — Replace string A with B]
+    A4[rethink_memory_block — Rewrite the entire block]
+    A5[delete_memory_block — interrupt_on, approval required]
+    A6[rename_memory_block — Change the label]
+    A7[finish_memory_edits — Signal end of batch]
+
+    START --> Q1
+    Q1 -->|No| Q3
+    Q1 -->|Yes| Q0
+    Q0 -->|Yes| REJECT
+    Q0 -->|No| Q2
+    Q3 -->|Yes| A1
+    Q3 -->|Just rename| A6
+    Q2 -->|Add info| A2
+    Q2 -->|Fix a section| A3
+    Q2 -->|Rewrite all| A4
+    Q2 -->|Remove block| Q4
+    Q4 -->|Yes| A5
+    A1 & A2 & A3 & A4 & A6 --> A7

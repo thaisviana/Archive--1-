@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1465.2000000000003 1622.3000000000002" width="1465.2000000000003" height="1622.3000000000002" style="--bg:#1a1b26;--fg:#a9b1d6;--line:#3d59a1;--accent:#7aa2f7;--muted:#565f89;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 30%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="var(--_arrow)" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="var(--_arrow)" />
+  </marker>
+</defs>
+<polyline points="995.7375000000002,76 995.7375000000002,116.00000000000003" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="1086.0276327212268,482.10986727877355 1086.0276327212268,600.9000000000001 1163.8000000000002,600.9000000000001 1163.8000000000002,757.3750000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="905.4473672787736,482.10986727877355 905.4473672787736,600.9000000000001 827.6750000000002,600.9000000000001 827.6750000000002,629.4000000000001" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="827.6750000000002,921.3500000000001 827.6750000000002,1177.8250000000003" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="928.693487710163,820.3315122898373 928.693487710163,949.8500000000001 1219.7250000000001,949.8500000000001 1219.7250000000001,1177.8250000000003" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="725.7240060930817,819.3990060930817 725.7240060930817,949.8500000000001 423.62500000000006,949.8500000000001 423.62500000000006,978.3500000000003" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="519.0873111136456,1317.8376888863547 519.0873111136456,1441.8000000000002 616.075,1441.8000000000002 616.075,1470.3000000000002" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="328.16268888635454,1317.8376888863547 328.16268888635454,1441.8000000000002 231.175,1441.8000000000002 231.175,1470.3000000000002" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="231.175,1506.3000000000002 231.175,1546.3000000000002" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="1041.4" y="587.4000000000001" width="244.8" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1163.8000000000002" y="600.9000000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes (persona, preferences, user_profile)</text>
+<rect x="813.9550000000002" y="587.4000000000001" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="827.6750000000002" y="600.9000000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="779.6350000000002" y="936.3500000000001" width="96.08" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="827.6750000000002" y="949.8500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Factual/domain</text>
+<rect x="1154.525" y="936.3500000000001" width="130.4" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="1219.7250000000001" y="949.8500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">What did we discuss?</text>
+<rect x="409.90500000000003" y="936.3500000000001" width="27.44" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="423.62500000000006" y="949.8500000000001" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">No</text>
+<rect x="599.495" y="1428.3000000000002" width="33.16" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="616.075" y="1441.8000000000002" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Yes</text>
+<rect x="203.155" y="1428.3000000000002" width="56.04" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="231.175" y="1441.8000000000002" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Complex</text>
+<rect x="890.3625000000002" y="40" width="210.75000000000003" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="995.7375000000002,116.00000000000003 1223.9375000000002,344.20000000000005 995.7375000000002,572.4000000000001 767.5375000000001,344.20000000000005" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="827.6750000000002,629.4000000000001 973.6500000000002,775.3750000000001 827.6750000000002,921.3500000000001 681.7000000000002,775.3750000000001" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<polygon points="423.62500000000006,978.3500000000003 641.1000000000001,1195.8250000000003 423.62500000000006,1413.3000000000002 206.15000000000003,1195.8250000000003" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="40" y="1470.3000000000002" width="382.35" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="997.6500000000002" y="757.3750000000001" width="332.3" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="665.1000000000001" y="1177.8250000000003" width="325.15000000000003" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="1014.2500000000001" y="1177.8250000000003" width="410.95000000000005" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="446.35" y="1470.3000000000002" width="339.45000000000005" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="40" y="1546.3000000000002" width="382.35" height="36" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<text x="995.7375000000002" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Agent receives a question</text>
+<text x="995.7375000000002" y="344.20000000000005" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Tier 1: Is it in the memory blocks? (already in context)</text>
+<text x="827.6750000000002" y="775.3750000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Tier 2: Is it a factual question?</text>
+<text x="423.62500000000006" y="1195.8250000000003" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Tier 3: Does it involve relationships or temporality?</text>
+<text x="231.175" y="1488.3000000000002" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Tier 4: Complex question — search multiple layers</text>
+<text x="1163.8000000000002" y="775.3750000000001" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Answer directly (Layer 1 already injected)</text>
+<text x="827.6750000000002" y="1195.8250000000003" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">search_knowledge_base (Layer 2 — kb_docs)</text>
+<text x="1219.7250000000001" y="1195.8250000000003" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">search_conversation_history (Layer 2 — conversations)</text>
+<text x="616.075" y="1488.3000000000002" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">search_knowledge_graph (Layer 3 — Graphiti)</text>
+<text x="231.175" y="1564.3000000000002" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Search Layer 2 + Layer 3, then synthesize results</text>
+</svg>

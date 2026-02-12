@@ -1,0 +1,18 @@
+flowchart LR
+    subgraph DOCKER[docker-compose.yml]
+        subgraph PG_SVC[postgres]
+            PG_IMG[PostgreSQL 17 + pgvector extension]
+            PG_PORT[Port: 5432]
+            PG_DB[DB: agent_memory]
+            PG_HEALTH[Healthcheck: pg_isready]
+        end
+        subgraph FK_SVC[falkordb]
+            FK_IMG[FalkorDB (Redis protocol)]
+            FK_PORT1[Port: 6379 (Redis)]
+            FK_PORT2[Port: 3000 (Browser UI)]
+            FK_HEALTH[Healthcheck: redis-cli ping]
+        end
+    end
+
+    APP[Agent Application] -->|SQLAlchemy + pgvector| PG_SVC
+    APP -->|Graphiti FalkorDriver| FK_SVC

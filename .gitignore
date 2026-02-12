@@ -1,0 +1,128 @@
+# Python & Virtual Environment
+.venv/
+venv/
+env/
+*.py[cod]
+__pycache__/
+*.so
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Environment Variables (NEVER commit credentials!)
+.env
+.env.local
+.env.*.local
+
+# Database & Cache Files
+*.db
+*.sqlite
+*.sqlite3
+test_sqlite.db
+workspace/
+
+# Logs & Temporary Files
+*.log
+*.pid
+logs/
+tmp/
+temp/
+
+# Build & Distribution
+build/
+dist/
+*.egg-info/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+
+# LangChain & LLM Cache
+.langchain/
+langchain_cache/
+.cache/
+tiktoken_cache/
+nltk_cache/
+
+# LangFuse & Observability
+.langfuse/
+traces/
+
+# Docker
+.docker/
+
+# Node (if using Node.js tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# OS Specific
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE folders
+.vscode/
+.idea/
+*.iml
+
+# OS Temporary files
+*~
+*.bak
+*.swp
+
+# Project Specific
+workspace/
+*.pkl
+*.pickle
+*.joblib
+model_cache/
+
+# LLM Model Files (if downloaded locally)
+models/
+checkpoints/
+*.bin
+*.safetensors
+*.ckpt
+
+# Development
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# macOS
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.TemporaryItems
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

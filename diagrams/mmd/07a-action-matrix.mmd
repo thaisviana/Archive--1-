@@ -1,0 +1,20 @@
+flowchart TB
+    subgraph SAFE[Auto-execute — Low Risk, Reversible]
+        direction LR
+        VIEW[view_memory_blocks — Read-only]
+        SEARCH[search_knowledge_base — Read-only]
+        INSERT[insert_memory_block — Low-stakes write]
+        REPLACE[replace_memory_content — Low-stakes write]
+        RETHINK[rethink_memory_block — Low-stakes write]
+    end
+
+    subgraph DANGER[Always Approve — High Risk or Irreversible]
+        direction LR
+        DELETE[delete_memory_block — Destructive]
+        EMAIL[send_email — Irreversible]
+        API[external_api_call — External side-effect]
+        DBMUT[database_mutation — Irreversible]
+    end
+
+    SAFE -.->|No approval needed| OK[Agent proceeds]
+    DANGER -->|interrupt_on requires approval| REVIEW[Human Review: Approve | Edit | Reject]

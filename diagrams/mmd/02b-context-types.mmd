@@ -1,0 +1,23 @@
+flowchart LR
+    subgraph CONTEXT_TYPES[Agent Context Types]
+        direction TB
+        SI[System Instructions (who the agent is)]
+        RC[Retrieved Context (on-demand search)]
+        CH[Conversation History (semantic history)]
+        LTM[Long-term Memory (persistent beliefs)]
+    end
+
+    subgraph LAYERS[Memory Layers]
+        direction TB
+        ML1[Layer 1: persona, preferences]
+        ML2_KB[Layer 2: kb_docs namespace]
+        ML2_CONV[Layer 2: conversations namespace]
+        ML3[Layer 3: Graphiti temporal graph]
+    end
+
+    SI ---|injected by middleware| ML1
+    RC ---|search tools| ML2_KB
+    RC ---|search tools| ML3
+    CH ---|search_conversation_history| ML2_CONV
+    LTM ---|editable blocks| ML1
+    LTM ---|temporal facts| ML3

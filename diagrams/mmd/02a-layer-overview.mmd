@@ -1,0 +1,36 @@
+flowchart TB
+    subgraph AGENT[Agent]
+        SYS[System Prompt (active context)]
+    end
+
+    subgraph L1[Layer 1 — Structured Memory]
+        direction TB
+        L1_DESC[Agents conscious mind — Explicit, editable beliefs]
+        L1_DB[(PostgreSQL: MemoryBlock + BlockHistory)]
+        L1_TOOLS[8 Memory Tools (CRUD + versioning)]
+        L1_DESC --- L1_DB
+        L1_DB --- L1_TOOLS
+    end
+
+    subgraph L2[Layer 2 — Semantic Memory]
+        direction TB
+        L2_DESC[Meaning-based search over unstructured content]
+        L2_DB[(PostgreSQL + pgvector — Hybrid Search (RRF))]
+        L2_NS[Namespaces: conversations | kb_docs]
+        L2_DESC --- L2_DB
+        L2_DB --- L2_NS
+    end
+
+    subgraph L3[Layer 3 — Knowledge Graph]
+        direction TB
+        L3_DESC[Temporal relationships between entities]
+        L3_DB[(FalkorDB + Graphiti — Graph + Episodes)]
+        L3_CAP[Entity extraction, fact expiration, temporal reasoning]
+        L3_DESC --- L3_DB
+        L3_DB --- L3_CAP
+    end
+
+    SYS -->|Static blocks (persona, profile) in system prompt — dynamic blocks in user message| L1
+    AGENT -->|search_knowledge_base, search_conversation_history| L2
+    AGENT -->|search_knowledge_graph| L3
+    L1 -->|Static blocks cached in prompt, dynamic blocks per turn| SYS

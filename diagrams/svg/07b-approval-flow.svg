@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 646.76 843" width="646.76" height="843" style="--bg:#1a1b26;--fg:#a9b1d6;--line:#3d59a1;--accent:#7aa2f7;--muted:#565f89;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 30%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="var(--_arrow)" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="var(--_arrow)" />
+  </marker>
+</defs>
+<polyline points="231.56,76 231.56,133" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="231.56,169 231.56,226" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="231.56,262 231.56,319" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="231.56,355 231.56,383.5 104.06,383.5 104.06,505" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="231.56,355 231.56,412" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="231.56,355 231.56,383.5 474.06,383.5 474.06,412" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="104.06,541 104.06,616 123.21000000000001,616" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="231.56,448 231.56,505" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="474.06,448 474.06,505" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="231.56,541 231.56,616 212.41,616" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="167.81,634 167.81,691" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="474.06,541 474.06,598" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="167.81,727 167.81,767" fill="none" stroke="var(--_line)" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="106.3" y="91" width="250.52" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="231.56" y="104.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Agent decides to call delete_memory_block</text>
+<rect x="160.64" y="184" width="141.84" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="231.56" y="197.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">interrupt_on triggered</text>
+<rect x="123.46" y="277" width="216.20000000000002" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="231.56" y="290.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Present context + rationale to user</text>
+<rect x="76.04" y="416.5" width="56.04" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="104.06" y="430" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Approve</text>
+<rect x="212.12" y="370" width="38.88" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="231.56" y="383.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Edit</text>
+<rect x="448.9" y="370" width="50.32" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="474.06" y="383.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Reject</text>
+<rect x="36" y="556" width="136.12" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="104.06" y="569.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Agent executes action</text>
+<rect x="137.76" y="463" width="187.6" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="231.56" y="476.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Agent receives modified action</text>
+<rect x="337.36" y="463" width="273.40000000000003" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="474.06" y="476.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">Agent receives rejection and adjusts approach</text>
+<rect x="45.41" y="649" width="244.8" height="27" rx="4" ry="4" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="167.81" y="662.5" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="var(--_text-muted)">LangFuse @observe logs action + decision</text>
+<circle cx="231.56" cy="58" r="16" fill="var(--_text)" stroke="none" />
+<rect x="172.66" y="133" width="117.80000000000001" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="176.235" y="226" width="110.65" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="179.81" y="319" width="103.5" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="59.46" y="505" width="89.2" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="194.11" y="412" width="74.9" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="429.46" y="412" width="89.2" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="123.21000000000001" y="598" width="89.2" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="172.66" y="505" width="117.80000000000001" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="415.15999999999997" y="505" width="117.80000000000001" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<rect x="123.21000000000001" y="691" width="89.2" height="36" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+<circle cx="474.06" cy="616" r="16" fill="none" stroke="var(--_text)" stroke-width="1.5" />
+<circle cx="474.06" cy="616" r="12" fill="var(--_text)" stroke="none" />
+<circle cx="167.81" cy="785" r="16" fill="none" stroke="var(--_text)" stroke-width="1.5" />
+<circle cx="167.81" cy="785" r="12" fill="var(--_text)" stroke="none" />
+
+<text x="231.56" y="151" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">AgentDecides</text>
+<text x="231.56" y="244" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Interrupted</text>
+<text x="231.56" y="337" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">UserReview</text>
+<text x="104.06" y="523" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Approved</text>
+<text x="231.56" y="430" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Edited</text>
+<text x="474.06" y="430" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Rejected</text>
+<text x="167.81" y="616" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">Executed</text>
+<text x="231.56" y="523" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">AgentRetries</text>
+<text x="474.05999999999995" y="523" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">AgentAdjusts</text>
+<text x="167.81" y="709" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="var(--_text)">AuditLog</text>
+
+
+</svg>

@@ -1,0 +1,24 @@
+flowchart TD
+    ACTION[Agent wants to execute a state-modifying action]
+
+    ASSESS[Assess confidence (0.0 - 1.0)]
+
+    C09{>= 0.9?}
+    C07{>= 0.7?}
+    C05{>= 0.5?}
+    C03{>= 0.3?}
+
+    AUTO[Auto-execute — Execute and briefly explain]
+    SUGGEST[Suggest and Wait — I can do X. Should I proceed?]
+    ESCALATE[Escalate — Explain uncertainty and ask for guidance]
+    REFUSE[Refuse — State uncertainty and request clarification]
+
+    ACTION --> ASSESS --> C09
+    C09 -->|Yes| AUTO
+    C09 -->|No| C07
+    C07 -->|Yes| SUGGEST
+    C07 -->|No| C05
+    C05 -->|Yes| ESCALATE
+    C05 -->|No| C03
+    C03 -->|Yes| ESCALATE
+    C03 -->|No| REFUSE

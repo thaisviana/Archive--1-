@@ -1,0 +1,16 @@
+flowchart TB
+    subgraph BEFORE[Traditional RAG]
+        direction LR
+        C1[Chunk: The policy allows 30 days for refunds]
+        E1[Chunk embedding (no context)]
+        C1 --> E1
+    end
+
+    subgraph AFTER[Contextual Retrieval]
+        direction LR
+        C2[Chunk: The policy allows 30 days for refunds]
+        CTX2[Generated context: This excerpt is from section 4.2 of the Customer Service Manual, about return policies]
+        MERGED[Contextualized chunk: context + original chunk]
+        E2[Enriched embedding (with context)]
+        C2 --> CTX2 --> MERGED --> E2
+    end
