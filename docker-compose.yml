@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  falkordb:
+    # Using Redis for local dev since FalkorDB speaks Redis protocol
+    image: redis:7-alpine
+    container_name: falkordb
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./falkordb_data:/data
+    restart: unless-stopped

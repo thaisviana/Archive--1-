@@ -6,4 +6,3 @@ def test_deepagents_assemble(agent_no_llm):
     agent = agent_no_llm
     assert agent is not None
     assert hasattr(agent, "invoke") or hasattr(agent, "run")
-

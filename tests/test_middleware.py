@@ -40,4 +40,3 @@ def test_token_management_and_rethink():
     rethink = MemoryRethinkMiddleware()
     result = rethink({"needs_rethink": True})
     assert not result.get("needs_rethink", False)
-

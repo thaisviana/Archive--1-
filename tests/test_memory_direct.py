@@ -16,4 +16,3 @@ def test_memory_direct_query(db_session):
 
     # Role should appear in content (after ingestion test)
     assert "role" in user_profile.content.lower() or "software engineer" in user_profile.content.lower()
-

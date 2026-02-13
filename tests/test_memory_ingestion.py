@@ -36,4 +36,3 @@ def test_memory_ingestion(db_session):
     # View memory blocks via tool
     view = view_memory_blocks.func()
     assert isinstance(view, str)
-
