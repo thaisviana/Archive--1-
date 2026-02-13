@@ -1,6 +1,10 @@
 # 🤖 Sistema de Memória Persistente para Agentes com LLM
 
-Uma solução completa de **armazenamento de memória persistente** para agentes de IA que mantêm contexto sobre usuários, preferências e histórico de interações.
+[![CI](https://github.com/thaisviana/Archive--1-/actions/workflows/ci.yml/badge.svg)](https://github.com/thaisviana/Archive--1-/actions/workflows/ci.yml)
+
+> CI status para o repositório `thaisviana/Archive--1-`.
+
+Uma solução  **armazenamento de memória persistente** para agentes de IA que mantêm contexto sobre usuários, preferências e histórico de interações.
 
 ## 📋 Objetivo do Projeto
 
@@ -26,18 +30,8 @@ Este projeto implementa um sistema robusto que permite agentes de IA:
 -  **OpenAI API Key** (opcional, apenas para testes com LLM)
 -  **macOS/Linux/Windows** com terminal/PowerShell
 
-### Instalação em 5 passos
+### Instalação 
 
-
-#### 2️⃣ Criar ambiente virtual
-
-```bash
-cd /path/para/seu/projeto
-python3.12 -m venv .venv
-source .venv/bin/activate  # macOS/Linux
-# ou
-.venv\Scripts\activate     # Windows
-```
 
 #### 3️⃣ Instalar dependências
 
@@ -176,6 +170,10 @@ PYTHONPATH=. python test_agent_query.py
 
 **Nota**: Se receber erro SSL, use o **Teste 2** como alternativa (funciona sem API).
 
+---
+
+## 📦 Dependências 
+
 **Lista completa:** Ver [requirements.txt](requirements.txt) (recomendado para instalar)  
 **Todas as dependências transitivas:** Ver [requirements-full.txt](requirements-full.txt)
 
@@ -193,3 +191,109 @@ O agente mantém **6 blocos de memória versionados** que armazenam informaçõe
 | **learnings** | 2500 chars | Fatos aprendidos sobre o usuário | ❌ Não |
 | **custom** | 5000 chars | Campo extensível para dados customizados | ❌ Não |
 
+### 8️⃣ Ferramentas de Memória Disponíveis
+
+O agente pode usar estas ferramentas para manipular memória:
+
+#### 1. `view_memory_blocks(block_name=None)`
+Visualiza conteúdo de blocos específicos ou todos
+
+```python
+# Ver um bloco
+view_memory_blocks("user_profile")
+
+# Ver todos os blocos
+view_memory_blocks()
+```
+
+#### 2. `insert_memory_block(block_name, content)`
+Adiciona conteúdo ao final de um bloco
+
+```python
+insert_memory_block("user_profile", "Novo fato sobre João")
+```
+
+#### 3. `replace_memory_content(block_name, old_text, new_text)`
+Substitui um trecho específico
+
+```python
+replace_memory_content("user_profile", "Engineer", "Senior Engineer")
+```
+
+#### 4. `rethink_memory_block(block_name, new_content)`
+Reescreve completamente um bloco (cria nova versão)
+
+```python
+rethink_memory_block("user_profile", "Novo conteúdo reescrito completamente")
+```
+
+#### 5. `create_memory_block(name, limit=3000, readonly=False)`
+Cria um novo bloco customizado
+
+```python
+create_memory_block("customer_interactions", limit=3000)
+```
+
+#### 6. `delete_memory_block(block_name)`
+Deleta um bloco
+
+```python
+delete_memory_block("custom")
+```
+
+#### 7. `rename_memory_block(old_name, new_name)`
+Renomeia um bloco
+
+```python
+rename_memory_block("custom", "notes")
+```
+
+#### 8. `finish_memory_edits(summary)`
+Marca fim de sessão com resumo
+
+```python
+finish_memory_edits("Atualizado email e role de João")
+```
+
+---
+
+## 🏗️ Arquitetura
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                   Pergunta do Usuário                         │
+│              "Qual é o role profissional de João?"           │
+└──────────────────┬───────────────────────────────────────────┘
+                   │
+                   ▼
+        ┌─────────────────────────┐
+        │  MemoryInjection        │  Carrega blocos do PostgreSQL
+        │  Middleware             │  Formata como contexto
+        └──────────┬──────────────┘  Prepende à mensagem
+                   │
+                   ▼
+        ┌─────────────────────────┐
+        │  TokenManagement        │  Conta tokens (tiktoken)
+        │  Middleware             │  Alerta se > 8000 tokens
+        └──────────┬──────────────┘  Dispara compressão
+                   │
+                   ▼
+        ┌─────────────────────────┐
+        │   Agente DeepAgents     │  Raciocina com LLM (OpenAI)
+        │   com 8 ferramentas     │  Decide quais ferramentas usar
+        └──────────┬──────────────┘  Gera resposta
+                   │
+                   ▼
+        ┌─────────────────────────┐
+        │  MemoryRethink          │  Monitora tamanho dos blocos
+        │  Middleware             │  Marca para compressão @ 80%
+        └──────────┬──────────────┘  Atualiza histórico
+                   │
+                   ▼
+        ┌─────────────────────────┐
+        │  PostgreSQL + SQAlchemy │  Persiste mudanças
+        │  + Version Control      │  Mantém histórico completo
+        └─────────────────────────┘
+
+        ✅ Resposta: "Software Engineer"
+```

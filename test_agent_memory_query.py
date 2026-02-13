@@ -23,12 +23,9 @@ def answer_question_from_memory(question: str) -> str:
     print()
     
     # Display the question
-    print(f"❓ User Question: {question}")
+    print(f"User Question: {question}")
     print()
     
-    # Agent searches memory blocks for relevant information
-    print("🔍 Agent searching relevant memory blocks...")
-    print("-" * 60)
     
     # Retrieve all memory blocks
     blocks = session.query(MemoryBlock).all()
@@ -47,13 +44,9 @@ def answer_question_from_memory(question: str) -> str:
     
     # Display searched blocks
     for block in relevant_blocks:
-        print(f"\n📋 Memory Block: {block.label}")
+        print(f"Memory Block: {block.label}")
         print(f"   Content:\n{block.content}")
     
-    print()
-    print("-" * 60)
-    print("💭 Agent Reasoning:")
-    print("-" * 60)
     
     # Extract João's role from memory
     user_profile_block = session.query(MemoryBlock).filter_by(label="user_profile").first()
@@ -65,10 +58,9 @@ def answer_question_from_memory(question: str) -> str:
         content_lines = user_profile_block.content.split('\n')
         for line in content_lines:
             if "role" in line.lower():
-                print(f"✓ Role field: {line}")
+                return(f"✓ Role field: {line}")
         
-        answer = f"De acordo com a memória do agente, o role profissional de João é: Software Engineer."
-        return answer
+        return "User information found but could not extract specific role."
     else:
         return "Informação sobre João não encontrada na memória."
 
@@ -82,7 +74,7 @@ def main():
     
     print()
     print("=" * 60)
-    print("🤖 Agent Response:")
+    print("Agent Response:")
     print("=" * 60)
     print(answer)
     print()
@@ -91,7 +83,7 @@ def main():
     session = get_session()
     blocks = session.query(MemoryBlock).all()
     print("-" * 60)
-    print(f"📊 Total memory blocks accessed: {len(blocks)}")
+    print(f"Total memory blocks accessed: {len(blocks)}")
     for block in blocks:
         if block.history:
             print(f"   • {block.label}: {len(block.history)} version(s)")
