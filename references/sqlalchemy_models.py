@@ -90,6 +90,13 @@ def init_default_blocks(session):
             "char_limit": 3000,
             "read_only": False,
         },
+        {
+            "label": "conversation_log",
+            "content": "No conversations recorded yet.",
+            "description": "Rolling log of recent chat turns. Append-only; older content may be summarized if it grows too large.",
+            "char_limit": 6000,
+            "read_only": False,
+        },
     ]
     for block_data in defaults:
         existing = session.query(MemoryBlock).filter_by(label=block_data["label"]).first()

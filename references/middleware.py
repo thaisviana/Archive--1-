@@ -137,7 +137,7 @@ class MemoryInjectionMiddleware:
         try:
             # Load dynamic memory blocks
             dynamic_blocks = load_memory_blocks(
-                labels=["preferences", "working_context", "learnings"]
+                labels=["preferences", "working_context", "learnings", "conversation_log"]
             )
             # Load static blocks (persona, user_profile) for system prompt injection
             static_blocks = load_memory_blocks(labels=["persona", "user_profile"], read_only=True)

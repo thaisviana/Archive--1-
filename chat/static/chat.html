@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/chat.css" />
+  </head>
+  <body>
+    <div class="bg-glow"></div>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Interface de conversa</p>
+          <h1>Memoria viva do seu agent</h1>
+          <p class="subtitle">
+            Cada turno fica registrado nos blocos de memoria para respostas mais
+            consistentes.
+          </p>
+        </div>
+        <div class="status">
+          <span class="dot"></span>
+          <span>Online</span>
+        </div>
+      </header>
+
+      <section class="chat-card">
+        <div class="chat-log" id="chat-log">
+          <div class="message assistant">
+            <div class="avatar">A</div>
+            <div class="bubble">
+              Oi! Me conte o que precisa e eu vou guardar na memoria.
+            </div>
+          </div>
+        </div>
+
+        <form class="composer" id="chat-form">
+          <div class="input-wrap">
+            <textarea
+              id="chat-input"
+              placeholder="Digite sua mensagem..."
+              rows="1"
+            ></textarea>
+            <div class="file-row">
+              <label class="file-pill" for="chat-file">Anexar PDF</label>
+              <input id="chat-file" type="file" accept="application/pdf" />
+              <span class="file-name" id="file-name">Nenhum arquivo</span>
+            </div>
+            <div class="hint">Shift + Enter para quebrar linha</div>
+          </div>
+          <button type="submit" id="send-btn">Enviar</button>
+        </form>
+      </section>
+
+      <section class="memory-panel">
+        <div>
+          <h2>Memoria persistente</h2>
+          <p>
+            O agente registra o historico em um bloco chamado
+            <strong>conversation_log</strong> e usa esse contexto nas proximas
+            respostas.
+          </p>
+        </div>
+        <div class="pill">Sessao: <span id="session-id">-</span></div>
+      </section>
+    </main>
+
+    <script src="/chat.js"></script>
+  </body>
+</html>

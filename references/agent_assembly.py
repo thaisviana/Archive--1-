@@ -1,4 +1,16 @@
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+load_dotenv(ROOT_DIR / ".env")
+
+# Configurar certificados SSL usando certifi
+import certifi
+os.environ["SSL_CERT_FILE"] = certifi.where()
+os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
+
 from deepagents import create_deep_agent
 from deepagents.backends import FilesystemBackend
 from langgraph.checkpoint.memory import MemorySaver
@@ -14,8 +26,9 @@ from references.memory_tools import (
     rename_memory_block,
     view_memory_blocks,
 )
+from references.middleware import load_memory_blocks, format_as_memory_context
 
-DEFAULT_MODEL = "openai:gpt-5-mini-2025-08-07"
+DEFAULT_MODEL = "openai:gpt-4o-mini"
 
 SYSTEM_PROMPT = """## Persona
 
@@ -94,11 +107,26 @@ def assemble_agent(workspace_dir: str = "./workspace"):
 
 def create_langfuse_handler(user_id: str = None, session_id: str = None):
     """Create a LangFuse callback handler for tracing."""
+    base_url = os.environ.get("LANGFUSE_BASE_URL")
+    if base_url and not os.environ.get("LANGFUSE_HOST"):
+        os.environ["LANGFUSE_HOST"] = base_url
+
     return CallbackHandler()
 
 
 def run_agent(agent, user_input: str, session_id: str, user_id: str = None):
     """Run a single agent turn with full observability."""
+    try:
+        memory_blocks = load_memory_blocks(
+            labels=["preferences", "working_context", "learnings", "conversation_log"]
+        )
+        memory_context = format_as_memory_context(memory_blocks)
+        if memory_context:
+            user_input = f"{memory_context}\n\nUser Query:\n{user_input}"
+    except Exception:
+        # If memory load fails, continue without injected context.
+        pass
+
     langfuse_handler = create_langfuse_handler(user_id, session_id)
 
     config = {
