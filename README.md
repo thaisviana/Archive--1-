@@ -16,8 +16,10 @@ Este projeto implementa um sistema robusto que permite agentes de IA:
 - **Rastrear histórico completo** de todas as edições e mudanças  
 - **Integrar com OpenAI GPT** para respostas inteligentes baseadas em memória  
 - **Funcionar offline** com consultas diretas ao banco sem dependência de LLM  
+- **Interface de chat web** com upload de PDFs e persistência de conversas
+- **Busca inteligente por LLM** para consultar memória em linguagem natural
 
-- **Exemplo prático**: Um agente conhece João Silva, sabe que ele é Software Engineer, lembra-se de suas preferências e histórico de interações passadas, e usa essas informações para fornecer respostas mais precisas e contextualizadas.
+- **Exemplo prático**: Um agente conhece João Silva, sabe que ele é Software Engineer, lembra-se de suas preferências e histórico de interações passadas, e usa essas informações para fornecer respostas mais precisas e contextualizadas. Além disso, você pode fazer upload de PDFs através da interface web e depois perguntar "qual foi o último PDF que enviei?" - o agente responderá baseado no histórico de conversas salvo.
 
 ---
 
@@ -180,16 +182,79 @@ PYTHONPATH=. python test_agent_query.py
 
 ## 🧠 Sistema de Memória
 
-O agente mantém **6 blocos de memória versionados** que armazenam informações sobre usuários:
+O agente mantém **blocos de memória versionados** que armazenam informações sobre usuários e conversas:
 
 | Bloco | Limite | Descrição | Read-Only |
 |-------|--------|-----------|-----------|
 | **persona** | 2000 chars | Personalidade e objetivo do agente | ✅ Sim |
-| **user_profile** | 4000 chars | Informações pessoais e profissionais do usuário | ❌ Não |
-| **preferences** | 1500 chars | Preferências de comunicação, idioma, formato | ❌ Não |
-| **working_context** | 3000 chars | Contexto atual, tarefas em andamento | ❌ Não |
-| **learnings** | 2500 chars | Fatos aprendidos sobre o usuário | ❌ Não |
-| **custom** | 5000 chars | Campo extensível para dados customizados | ❌ Não |
+| **user_profile** | 3000 chars | Informações pessoais e profissionais do usuário | ❌ Não |
+| **preferences** | 2000 chars | Preferências de comunicação, idioma, formato | ❌ Não |
+| **working_context** | 4000 chars | Contexto atual, tarefas em andamento | ❌ Não |
+| **learnings** | 3000 chars | Fatos aprendidos sobre o usuário | ❌ Não |
+| **conversation_log** | 6000 chars | Log das conversas recentes e arquivos enviados | ❌ Não |
+
+### 💬 Chat com Upload de PDFs
+
+O sistema inclui uma interface web de chat que permite:
+
+- **Conversar com o agente** através de interface web amigável
+- **Fazer upload de arquivos PDF** que são extraídos e salvos na memória
+- **Persistência automática** das conversas no bloco `conversation_log`
+- **Contexto conversacional** - o agente acessa histórico de mensagens anteriores
+
+#### Iniciar o servidor de chat
+
+```bash
+# Ativar ambiente virtual e iniciar servidor
+source .venv/bin/activate
+./start_chat.sh
+
+# Ou manualmente na porta 8080
+cd chat && python chat_server.py
+```
+
+Acesse em: **http://localhost:8080**
+
+### 🔍 Busca Inteligente na Memória
+
+Use o script `search_memory.py` para consultar a memória usando **linguagem natural com LLM**:
+
+```bash
+# Fazer perguntas sobre conversas anteriores
+python search_memory.py "qual foi o último PDF enviado?"
+python search_memory.py "sobre o que conversamos?"
+python search_memory.py "o que está no log de conversas?"
+
+# Buscar em blocos específicos
+python search_memory.py "preferências do usuário" --blocks preferences user_profile
+
+# Ver resultados brutos sem LLM (busca por regex)
+python search_memory.py "agente" --raw
+
+# Listar todos os blocos disponíveis
+python search_memory.py --list
+
+# Buscar blocos atualizados hoje
+python search_memory.py --date-from "2026-02-27"
+
+# Incluir histórico de versões na busca
+python search_memory.py "o que aprendi?" --history
+```
+
+**Modos de operação:**
+- **Modo LLM (padrão)**: Usa gpt-4o-mini para analisar blocos e responder perguntas naturalmente
+- **Modo Raw (`--raw`)**: Busca por padrões/regex e exibe correspondências destacadas
+- **Filtros disponíveis**: `--blocks`, `--case-sensitive`, `--history`, `--no-context`
+
+### 📊 Visualizar Memória
+
+```bash
+# Ver todos os blocos
+python view_memory.py
+
+# Ver apenas log de conversas
+python view_memory.py conv
+```
 
 ### 8️⃣ Ferramentas de Memória Disponíveis
 
@@ -296,4 +361,62 @@ finish_memory_edits("Atualizado email e role de João")
         └─────────────────────────┘
 
         ✅ Resposta: "Software Engineer"
+```
+
+---
+
+## 🌐 Recursos Adicionais
+
+### Interface Web de Chat
+
+- Localização: `chat/chat_server.py` + `chat/static/`
+- Porta: 8080 (configurável via `.env`)
+- Funcionalidades:
+  - Chat em tempo real com o agente
+  - Upload de arquivos PDF (extração automática de texto)
+  - Persistência de conversas no bloco `conversation_log`
+  - Sessões únicas por navegador (UUID)
+  
+### Script de Busca Inteligente
+
+- Arquivo: `search_memory.py`
+- Funcionalidades:
+  - Perguntas em linguagem natural (usa LLM para responder)
+  - Busca por regex/padrões (modo `--raw`)
+  - Filtros por bloco, data, histórico
+  - Listagem de blocos disponíveis
+  - Análise contextual com gpt-4o-mini
+
+### Utilitários de Visualização
+
+- `view_memory.py`: Visualiza blocos formatados no terminal
+- `view_memory.py conv`: Exibe apenas o log de conversas
+
+---
+
+## 🔧 Troubleshooting
+
+### Erro SSL Certificate
+
+Se encontrar erros de certificado SSL:
+
+```bash
+python fix_ssl.py
+```
+
+### Chat não salva na memória
+
+Verifique se os blocos padrão foram inicializados:
+
+```bash
+python references/sqlalchemy_models.py
+python search_memory.py --list
+```
+
+### LLM não responde com contexto
+
+Confirme que a memória está sendo carregada:
+
+```bash
+python search_memory.py "o que está na memória?" --blocks conversation_log
 ```
