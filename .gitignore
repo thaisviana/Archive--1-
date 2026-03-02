@@ -97,6 +97,7 @@ Thumbs.db
 
 # Project Specific
 workspace/
+uploads/
 *.pkl
 *.pickle
 *.joblib
