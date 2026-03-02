@@ -26,7 +26,7 @@ from references.memory_tools import (
     rename_memory_block,
     view_memory_blocks,
 )
-from references.middleware import load_memory_blocks, format_as_memory_context
+from references.middleware import load_memory_blocks, format_as_memory_context, save_to_graph
 
 DEFAULT_MODEL = "openai:gpt-4o-mini"
 
@@ -115,7 +115,7 @@ def create_langfuse_handler(user_id: str = None, session_id: str = None):
 
 
 def run_agent(agent, user_input: str, session_id: str, user_id: str = None):
-    """Run a single agent turn with full observability."""
+    """Run a single agent turn with full observability and knowledge graph persistence."""
     try:
         memory_blocks = load_memory_blocks(
             labels=["preferences", "working_context", "learnings", "conversation_log"]
@@ -143,5 +143,14 @@ def run_agent(agent, user_input: str, session_id: str, user_id: str = None):
         {"messages": [{"role": "user", "content": user_input}]},
         config=config,
     )
+
+    # Persist conversation turn to knowledge graph (FalkorDB/Graphiti)
+    try:
+        result["session_id"] = session_id
+        result["user_id"] = user_id
+        save_to_graph(result)
+    except Exception as e:
+        import logging
+        logging.warning(f"Failed to save conversation to knowledge graph: {e}")
 
     return result

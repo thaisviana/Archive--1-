@@ -10,6 +10,49 @@ from references.sqlalchemy_models import MemoryBlock, get_session
 ROOT_DIR = Path(__file__).resolve()
 load_dotenv(ROOT_DIR.parent / ".env")
 
+def print_executive_summary(blocks):
+    """Exibe um resumo executivo dos blocos de memória."""
+    if not blocks:
+        return
+    
+    total_size = sum(len(block.content) for block in blocks)
+    total_limit = sum(block.char_limit for block in blocks)
+    usage_percent = (total_size / total_limit * 100) if total_limit > 0 else 0
+    
+    print("\n" + "="*80)
+    print("📊 RESUMO EXECUTIVO - BLOCOS DE MEMÓRIA")
+    print("="*80 + "\n")
+    
+    print(f"📈 CAPACIDADE TOTAL")
+    print(f"   Total de blocos:        {len(blocks)}")
+    print(f"   Espaço em uso:          {total_size:,} / {total_limit:,} caracteres")
+    print(f"   Taxa de utilização:     {usage_percent:.1f}%")
+    print(f"       {'█' * int(usage_percent / 5)}{'░' * (20 - int(usage_percent / 5))}")
+    
+    print(f"\n📋 DETALHAMENTO POR BLOCO")
+    print(f"   {'Bloco':<20} | {'Uso (chars)':>12} | {'Limite':>12} | {'Uso %':>6} | Status")
+    print("   " + "-" * 76)
+    
+    for block in sorted(blocks, key=lambda b: len(b.content), reverse=True):
+        size = len(block.content)
+        limit = block.char_limit
+        percent = (size / limit * 100) if limit > 0 else 0
+        
+        # Determinado status baseado em percentual
+        if percent >= 90:
+            status = "🔴 Crítico"
+        elif percent >= 75:
+            status = "🟠 Alto"
+        elif percent >= 50:
+            status = "🟡 Moderado"
+        else:
+            status = "🟢 Normal"
+        
+        print(f"   {block.label:<20} | {size:>12,} | {limit:>12,} | {percent:>5.1f}% | {status}")
+    
+    print("\n" + "="*80 + "\n")
+
+
 def view_all_memory():
     """Exibe todos os blocos de memória."""
     session = get_session()
@@ -19,7 +62,9 @@ def view_all_memory():
         print("❌ Nenhum bloco de memória encontrado.")
         return
     
-    print("\n" + "="*80)
+    # Exibir resumo executivo primeiro
+    print_executive_summary(blocks)
+    
     print("📚 BLOCOS DE MEMÓRIA SALVOS")
     print("="*80 + "\n")
     

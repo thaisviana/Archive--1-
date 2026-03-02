@@ -1,9 +1,5 @@
 # 🤖 Sistema de Memória Persistente para Agentes com LLM
 
-[![CI](https://github.com/thaisviana/Archive--1-/actions/workflows/ci.yml/badge.svg)](https://github.com/thaisviana/Archive--1-/actions/workflows/ci.yml)
-
-> CI status para o repositório `thaisviana/Archive--1-`.
-
 Uma solução  **armazenamento de memória persistente** para agentes de IA que mantêm contexto sobre usuários, preferências e histórico de interações.
 
 ## 📋 Objetivo do Projeto

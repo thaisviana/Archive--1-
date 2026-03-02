@@ -1,21 +1,34 @@
 #!/usr/bin/env python3
 """
-Script para buscar conteúdo nos blocos de memória do agente.
+Script para buscar conteúdo nos blocos de memória do agente e no grafo de episódios.
 """
 import os
 import re
 import argparse
+import logging
 from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 from openai import OpenAI
+import asyncio
 from references.sqlalchemy_models import MemoryBlock, BlockHistory, get_session
 
 ROOT_DIR = Path(__file__).resolve()
 load_dotenv(ROOT_DIR.parent / ".env")
 
+# Setup logging
+logger = logging.getLogger(__name__)
+
 # Inicializar cliente OpenAI
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+# Optionally import Graphiti for graph search
+try:
+    from graphiti_core import Graphiti
+    from graphiti_core.driver.falkordb_driver import FalkorDriver
+    GRAPHITI_AVAILABLE = True
+except ImportError:
+    GRAPHITI_AVAILABLE = False
 
 
 def highlight_match(text, pattern, case_sensitive=False):
@@ -37,6 +50,58 @@ def get_context(text, match_pos, context_chars=100):
     suffix = "..." if end < len(text) else ""
     
     return prefix + text[start:end] + suffix
+
+
+def search_graph_episodes(query, limit=5):
+    """
+    Buscar episódios similares no grafo (FalkorDB/Graphiti).
+    
+    Args:
+        query: Termo de busca ou pergunta
+        limit: Número máximo de episódios a retornar
+    
+    Returns:
+        Lista de dicionários com episódios encontrados
+    """
+    if not GRAPHITI_AVAILABLE:
+        return []
+    
+    try:
+        host = os.environ.get("FALKORDB_HOST", "localhost")
+        port = int(os.environ.get("FALKORDB_PORT", 6379))
+        username = os.environ.get("FALKORDB_USERNAME", None)
+        password = os.environ.get("FALKORDB_PASSWORD", None)
+        
+        driver = FalkorDriver(host=host, port=port, username=username, password=password)
+        graphiti = Graphiti(graph_driver=driver)
+        
+        # Buscar episódios similares
+        async def _retrieve():
+            results = await graphiti.retrieve_episodes(
+                reference_time=datetime.utcnow(),
+                last_n=limit,
+            )
+            return results or []
+        
+        # Executar busca assíncrona
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # Se há um loop rodando, criar uma tarefa
+                task = loop.create_task(_retrieve())
+                return []  # Retornar vazio se async
+            else:
+                episodes = loop.run_until_complete(_retrieve())
+                return episodes or []
+        except RuntimeError:
+            episodes = asyncio.run(_retrieve())
+            return episodes or []
+        
+    except Exception as e:
+        import logging
+        logging.warning(f"Erro ao buscar episódios no grafo: {e}")
+        return []
+
 
 
 def summarize_with_llm(query, results):
@@ -100,9 +165,9 @@ Com base nos blocos de memória acima, responda à pergunta do usuário de forma
 
 
 def search_in_blocks(query, blocks=None, case_sensitive=False, show_context=True, 
-                     context_chars=150, include_history=False, use_llm=True):
+                     context_chars=150, include_history=False, use_llm=True, use_graph=False):
     """
-    Busca um termo nos blocos de memória.
+    Busca um termo nos blocos de memória e opcionalmente no grafo.
     
     Args:
         query: Termo de busca (pode ser regex ou pergunta natural)
@@ -112,6 +177,7 @@ def search_in_blocks(query, blocks=None, case_sensitive=False, show_context=True
         context_chars: Número de caracteres de contexto em cada lado
         include_history: Se deve incluir histórico de versões na busca
         use_llm: Se deve usar LLM para resumir e responder (padrão: True)
+        use_graph: Se deve buscar também no grafo (FalkorDB/Graphiti)
     """
     session = get_session()
     results = []
@@ -194,6 +260,16 @@ def search_in_blocks(query, blocks=None, case_sensitive=False, show_context=True
     
     session.close()
     
+    # Buscar episódios no grafo se solicitado
+    graph_episodes = []
+    if use_graph and GRAPHITI_AVAILABLE:
+        try:
+            graph_episodes = search_graph_episodes(query, limit=5)
+            if graph_episodes:
+                logger.info(f"✅ {len(graph_episodes)} episódio(s) encontrado(s) no grafo")
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao buscar no grafo: {e}")
+    
     # Exibir resultados
     if not results:
         print(f"\n❌ Nenhuma correspondência encontrada para: '{query}'")
@@ -209,7 +285,11 @@ def search_in_blocks(query, blocks=None, case_sensitive=False, show_context=True
         print(answer)
         
         print("\n" + "="*80)
-        print(f"📊 Baseado em {sum(len(r['matches']) for r in results)} correspondência(s) em {len(results)} bloco(s)")
+        print(f"📊 Baseado em {sum(len(r['matches']) for r in results)} correspondência(s) em {len(results)} bloco(s)", end="")
+        if graph_episodes:
+            print(f" + {len(graph_episodes)} episódio(s) do grafo")
+        else:
+            print()
         print("="*80 + "\n")
         return
     
@@ -321,8 +401,11 @@ Exemplos de uso:
   # Fazer uma pergunta (usa LLM para responder com base na memória)
   python search_memory.py "qual foi o último PDF enviado?"
   
-  # Perguntar sobre conversas anteriores
-  python search_memory.py "sobre o que conversamos?"
+  # Buscar também no grafo de episódios
+  python search_memory.py "PDF" --graph
+  
+  # Perguntar sobre conversas anteriores com busca no grafo
+  python search_memory.py "sobre o que conversamos?" --graph
   
   # Buscar em blocos específicos
   python search_memory.py "preferências do usuário" --blocks preferences user_profile
@@ -394,6 +477,12 @@ Exemplos de uso:
     )
     
     parser.add_argument(
+        '-g', '--graph',
+        action='store_true',
+        help='Buscar também no grafo (FalkorDB/Graphiti) - requer graphiti-core instalado'
+    )
+    
+    parser.add_argument(
         '-l', '--list',
         action='store_true',
         help='Listar blocos de memória disponíveis'
@@ -437,7 +526,8 @@ Exemplos de uso:
         show_context=not args.no_context,
         context_chars=args.context_size,
         include_history=args.history,
-        use_llm=not args.raw
+        use_llm=not args.raw,
+        use_graph=args.graph
     )
 
 

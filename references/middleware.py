@@ -302,6 +302,8 @@ def save_to_graph(state: dict, runtime: Any = None) -> dict:
 
     Requires `graphiti-core` and a reachable FalkorDB instance.
     """
+    from datetime import datetime
+    
     # Prepare connection
     host = os.environ.get("FALKORDB_HOST", "localhost")
     port = int(os.environ.get("FALKORDB_PORT", 6379))
@@ -316,14 +318,15 @@ def save_to_graph(state: dict, runtime: Any = None) -> dict:
     conversation_content = _build_conversation_content(messages)
     turn_id = state.get("turn_id") or str(uuid.uuid4())
     session_id = state.get("session_id") or state.get("session") or "default_session"
+    reference_time = datetime.utcnow()  # Required by Graphiti.add_episode()
 
     async def _add_episode():
         await graphiti.add_episode(
             name=f"conversation_turn_{turn_id}",
             episode_body=conversation_content,
-            source="message",
+            reference_time=reference_time,
             group_id=session_id,
-            source_description="agent conversation",
+            source_description="agent_conversation",
         )
 
     # If an event loop is running, schedule the coroutine, otherwise run it
