@@ -100,6 +100,7 @@ def assemble_agent(workspace_dir: str = "./workspace"):
         },
         backend=FilesystemBackend(root_dir=workspace_dir),
         checkpointer=checkpointer,
+        skills=["skills/web_search"],
     )
 
     return agent

@@ -41,8 +41,8 @@ def db_session(env_setup):
 def agent_no_llm():
     """Assemble agent but do not require OPENAI API key for basic assembly tests."""
     try:
-        from references.agent_assembly import assemble_agent
-        agent = assemble_agent(workspace_dir="./workspace_test")
+        from references.agent_init import initialize_agent
+        agent = initialize_agent(workspace_dir="./workspace_test")
         return agent
     except Exception:
         pytest.skip("DeepAgents assembly failed in this environment")

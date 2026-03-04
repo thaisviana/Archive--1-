@@ -16,7 +16,8 @@ import certifi
 os.environ["SSL_CERT_FILE"] = certifi.where()
 os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
 
-from references.agent_assembly import assemble_agent, run_agent
+from references.agent_assembly import run_agent
+from references.agent_init import get_agent
 from references.sqlalchemy_models import MemoryBlock, get_session
 
 def test_agent():
@@ -37,7 +38,7 @@ def test_agent():
     # Montar agente
     print("🤖 Montando agente...")
     try:
-        agent = assemble_agent()
+        agent = get_agent()
         print("✅ Agente montado com sucesso\n")
     except Exception as e:
         print(f"❌ Erro ao montar agente: {e}")

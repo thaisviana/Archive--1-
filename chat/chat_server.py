@@ -15,7 +15,8 @@ load_dotenv(ROOT_DIR / ".env")
 if not os.environ.get("OPENAI_API_KEY") and os.environ.get("open_ai_key"):
     os.environ["OPENAI_API_KEY"] = os.environ["open_ai_key"]
 
-from references.agent_assembly import assemble_agent, run_agent
+from references.agent_assembly import run_agent
+from references.agent_init import get_agent
 from references.sqlalchemy_models import MemoryBlock, get_session, init_default_blocks
 
 try:
@@ -177,7 +178,7 @@ def _handle_multipart(
 
 
 class ChatHandler(BaseHTTPRequestHandler):
-    agent = assemble_agent()
+    agent = get_agent()
 
     def _send(self, status: int, body: bytes, content_type: str) -> None:
         self.send_response(status)
